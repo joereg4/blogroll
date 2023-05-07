@@ -1,9 +1,9 @@
 from flask import Flask
 import feedparser
 
-app = Flask(__name__)
+app = Flask(__name__, static_url_path='/blog/static')
 
-@app.route('/blogroll')
+@app.route('/blog/')
 def index():
     # Parse the RSS feed
     feed = feedparser.parse('http://jregenstein.com/feed')
@@ -18,4 +18,4 @@ def index():
     return html
 
 if __name__ == '__main__':
-    app.run()
+    app.run(port=8000)
