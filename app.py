@@ -12,14 +12,8 @@ def blogfeed():
     # Parse the RSS feed
     feed = feedparser.parse('http://jregenstein.com/feed')
 
-    # Build the HTML response
-    html = '<h1>{}</h1>'.format(feed.feed.title)
-    html += '<ul>'
-    for entry in feed.entries:
-        html += '<li><a href="{}">{}</a></li>'.format(entry.link, entry.title)
-    html += '</ul>'
-
-    return render_template('blogfeed.html', content=html)
+    # Pass the feed title and entries to the template
+    return render_template('blogfeed.html', title=feed.feed.title, entries=feed.entries)
 
 if __name__ == '__main__':
     app.run(port=8000)
