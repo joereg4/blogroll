@@ -4,13 +4,13 @@
     <title>My Blog Feed</title>
   </head>
   <body>
-  <h1>Blogfeed</h1>
-
+  <h1>Blogfeed2</h1>
+    <h1>{{ title }}</h1>
     <ul>
       {% for entry in entries %}
         <li><a href="{{ entry.link }}">{{ entry.title }}</a></li>
       {% endfor %}
     </ul>
-  <h1>{{ title }}</h1>
+
   </body>
 </html>
