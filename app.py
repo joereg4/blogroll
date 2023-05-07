@@ -3,7 +3,7 @@ import feedparser
 
 app = Flask(__name__)
 
-@app.route('/')
+@app.route('/blogroll')
 def index():
     # Parse the RSS feed
     feed = feedparser.parse('http://jregenstein.com/feed')
