@@ -1,4 +1,4 @@
-from flask import Flask
+from flask import Flask, render_template
 import feedparser
 
 app = Flask(__name__, static_url_path='/blog/static')
@@ -15,7 +15,7 @@ def index():
         html += '<li><a href="{}">{}</a></li>'.format(entry.link, entry.title)
     html += '</ul>'
 
-    return html
+    return render_template('index.html', content=html)
 
 if __name__ == '__main__':
     app.run(port=8000)
