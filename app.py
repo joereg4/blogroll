@@ -1,10 +1,14 @@
 from flask import Flask, render_template
 import feedparser
 
-app = Flask(__name__, static_url_path='/blog/static')
+app = Flask(__name__)
+
+@app.route('/')
+def index():
+    return render_template('index.html')
 
 @app.route('/blog/')
-def index():
+def blogfeed():
     # Parse the RSS feed
     feed = feedparser.parse('http://jregenstein.com/feed')
 
@@ -15,7 +19,7 @@ def index():
         html += '<li><a href="{}">{}</a></li>'.format(entry.link, entry.title)
     html += '</ul>'
 
-    return render_template('index.html', content=html)
+    return render_template('blogfeed.html', content=html)
 
 if __name__ == '__main__':
     app.run(port=8000)
